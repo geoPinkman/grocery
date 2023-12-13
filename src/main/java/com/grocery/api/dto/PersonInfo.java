@@ -1,4 +1,4 @@
-package com.grocery.api.domain;
+package com.grocery.api.dto;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -6,15 +6,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-public class Product {
+public class PersonInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
-    private int price;
+    private String additionalInfo;
+    @OneToOne()
+    private Persons person;
 
 }
