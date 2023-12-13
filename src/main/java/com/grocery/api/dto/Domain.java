@@ -1,5 +1,6 @@
 package com.grocery.api.dto;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,15 +11,14 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Persons {
+@Table(name = "domains")
+public class Domain {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String nickname;
-    private String phoneNumber;
-    private String address;
-    @ManyToMany
-    private List<Domains> domains;
-
+    @Column(name = "domain")
+    private String domain;
+    @ManyToMany(mappedBy = "domains")
+    private List<Person> people;
 }

@@ -9,13 +9,16 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "person_info")
 public class PersonInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "additional_information")
     private String additionalInfo;
-    @OneToOne()
-    private Persons person;
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Person person;
 
 }
