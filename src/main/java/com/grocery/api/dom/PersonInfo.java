@@ -1,4 +1,4 @@
-package com.grocery.api.dto;
+package com.grocery.api.dom;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -14,10 +14,11 @@ public class PersonInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
     @Column(name = "additional_information")
     private String additionalInfo;
-    @OneToOne
+    @OneToOne(optional = false)
     @JoinColumn(name = "id")
     private Person person;
 

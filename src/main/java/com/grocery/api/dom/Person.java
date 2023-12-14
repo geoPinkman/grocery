@@ -1,4 +1,4 @@
-package com.grocery.api.dto;
+package com.grocery.api.dom;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,6 +15,7 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
     @Column(name = "nick_name")
     private String nickname;
@@ -29,6 +30,6 @@ public class Person {
             inverseJoinColumns = @JoinColumn(name = "domain_id", referencedColumnName = "id")
     )
     private List<Domain> domains;
-    @OneToOne(mappedBy = "person")
+    @OneToOne(optional = false, mappedBy = "person")
     private PersonInfo info;
 }

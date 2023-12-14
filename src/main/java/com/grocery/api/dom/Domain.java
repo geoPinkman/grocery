@@ -1,4 +1,4 @@
-package com.grocery.api.dto;
+package com.grocery.api.dom;
 
 
 import jakarta.persistence.*;
@@ -16,6 +16,7 @@ public class Domain {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
     @Column(name = "domain")
     private String domain;
