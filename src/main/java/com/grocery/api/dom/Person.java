@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -14,7 +14,7 @@ import java.util.List;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private long id;
     @Column(name = "nick_name")
@@ -24,12 +24,10 @@ public class Person {
     @Column(name = "address")
     private String address;
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "domains_persons",
+    @JoinTable(name = "domains_persons",
             joinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "domain_id", referencedColumnName = "id")
-    )
-    private List<Domain> domains;
+            inverseJoinColumns = @JoinColumn(name = "domain_id", referencedColumnName = "id"))
+    private Set<Domain> domains;
     @OneToOne(optional = false, mappedBy = "person")
     private PersonInfo info;
 }

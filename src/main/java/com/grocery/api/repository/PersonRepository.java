@@ -18,6 +18,8 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     @Override
     Optional<Person> findById(Long aLong);
 
+    Optional<Person> findPersonByNickname(String nickName);
+
     @Override
     void deleteById(Long aLong);
 }
